@@ -1,10 +1,13 @@
 // React Complete Guide
-import React, { Component } from 'react';
+//import React, { Component } from 'react';
+import React, { useState } from 'react';  //useState is most important react hook
 import './App.css';
 import Person from './Person/Person';
 
+/*
 class App extends Component {
  
+  
   //special property 'state' can be used only if you extends Component, cannot be used in function or lamda function
   //props are set and managed from outside of component
   //state is managed from inside commponent
@@ -33,23 +36,68 @@ class App extends Component {
     otherState: 'Some other value'
 
   })
-  }
+  };
+*/
+
+/** Using state logic by using function 
+ * i.e using function instead of class
+*/
+
+const App = () => {
+
+  //useState always return 2 elements: current state or updated state(whenever we changes) and 
+  //the other is function that allows to update the state
+
+//array destructuring
+const [personsState, setPersonsState] =  useState({
+    persons: [
+      {name: "Max", age: 28},
+      {name: "Manu", age:29},
+      {name: "Maria", age:22} 
+    ]
+});
+
+//better to create different useState for management as it will not modify the changes but replace it
+const [otherState, setOtherState] =  useState('some other value');
 
 
-  render() {
+const switchnameHandler = () => {
+  //console.log('Button Clicked!!');
+  //this keyword works or say can access stated because we are using arrow function else it won't work
+  //DON'T DO THIS:->   this.state.persons[0].name = "Nitin";
+
+  setPersonsState({
+    persons: [
+    {name: "Nitin", age: 28},
+    {name: "Manu", age:29},
+    {name: "Maria", age:25}
+  ]
+
+})
+};
+
+
+
+
+
+
+
+  //render() {
     return (
       <div className="App">
         <h1>Second Commit</h1>
-        <button onClick={this.switchnameHandler}>Switch Name</button>
+        <button onClick={switchnameHandler}>Switch Name</button>
 
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobby: Plaing games.</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
+        <Person name={personsState.persons[1].name} age={personsState.persons[1].age}>My hobby: Plaing games.</Person>
+        <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
         
       </div>
     );
-  }
+ // }
+
 }
+
 
 export default App;
 
