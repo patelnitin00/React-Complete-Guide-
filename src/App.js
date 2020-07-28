@@ -18,11 +18,29 @@ class App extends Component {
     ]
   }
 
+  //method for button click
+  switchnameHandler = () => {
+    //console.log('Button Clicked!!');
+    //this keyword works or say can access stated because we are using arrow function else it won't work
+    //DON'T DO THIS:->   this.state.persons[0].name = "Nitin";
+
+    this.setState({
+      persons: [
+      {name: "Nitin", age: 28},
+      {name: "Manu", age:29},
+      {name: "Maria", age:25}
+    ],
+    otherState: 'Some other value'
+
+  })
+  }
+
+
   render() {
     return (
       <div className="App">
         <h1>Second Commit</h1>
-        <button>Switch Name</button>
+        <button onClick={this.switchnameHandler}>Switch Name</button>
 
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobby: Plaing games.</Person>
