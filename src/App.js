@@ -1,10 +1,10 @@
 // React Complete Guide
-//import React, { Component } from 'react';
-import React, { useState } from 'react';  //useState is most important react hook
+import React, { Component } from 'react';
+//import React, { useState } from 'react';  //useState is most important react hook
 import './App.css';
 import Person from './Person/Person';
 
-/*
+
 class App extends Component {
  
   
@@ -18,9 +18,47 @@ class App extends Component {
       {name: "Max", age: 28},
       {name: "Manu", age:29},
       {name: "Maria", age:22}
-    ]
+    ],
+    otherState: 'some other state'
   }
 
+  switchnameHandler = (newName) => { 
+    //console.log('Button Clicked!!');
+    //this keyword works or say can access stated because we are using arrow function else it won't work
+    //DON'T DO THIS:->   this.state.persons[0].name = "Nitin";
+
+    this.setState({
+      persons: [
+      {name: newName, age: 28},
+      {name: "Manu", age:29},
+      {name: "Maria", age:25}
+    ]
+  })
+};
+
+  
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Second Commit</h1>
+         
+        <button onClick={() => this.switchnameHandler('Nitin')}>Switch Name</button>  {/* 1st way to bind */}
+
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+        <Person name={this.state.persons[1].name} 
+                age={this.state.persons[1].age} 
+                click={this.switchnameHandler.bind(this,'NITIN PATEL')}>My hobby: Plaing games.</Person> {/* 2nd way to bind - more suitable */}
+                
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        
+      </div>
+    );
+  }
+
+}
+
+  /*
   //method for button click
   switchnameHandler = () => {
     //console.log('Button Clicked!!');
@@ -43,6 +81,7 @@ class App extends Component {
  * i.e using function instead of class
 */
 
+/*
 const App = () => {
 
   //useState always return 2 elements: current state or updated state(whenever we changes) and 
@@ -82,7 +121,7 @@ const switchnameHandler = () => {
 
 
 
-  //render() {
+  
     return (
       <div className="App">
         <h1>Second Commit</h1>
@@ -94,9 +133,9 @@ const switchnameHandler = () => {
         
       </div>
     );
- // }
 
-}
+
+}*/
 
 
 export default App;
