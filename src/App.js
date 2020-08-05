@@ -24,6 +24,7 @@ class App extends Component {
     showPersons: false
   }
 
+ /*
   switchnameHandler = (newName) => { 
     //console.log('Button Clicked!!');
     //this keyword works or say can access stated because we are using arrow function else it won't work
@@ -36,6 +37,12 @@ class App extends Component {
       {name: "Maria", age:25}
     ]
   })
+}*/
+
+deletePersonHander = (personIndex) => {
+  const persons = this.state.persons;
+  persons.splice(personIndex, 1);
+  this.setState({persons : persons});
 }
 
 
@@ -73,8 +80,12 @@ togglePersonHandler = () => {
       persons = (  
         <div>
             {
-              this.state.persons.map(person => {
-                return <Person name={person.name} age={person.age}/>
+              this.state.persons.map((person,index) => {
+                return <Person 
+                          click = {() => this.deletePersonHander(index)}
+                          name={person.name} 
+                          age={person.age} 
+                          />
               })
             }
         </div>  
