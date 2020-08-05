@@ -2,9 +2,25 @@
 import React, { Component } from 'react';
 //import React, { useState } from 'react';  //useState is most important react hook
 //import Radium, {StyleRoot} from 'radium';
+import styled from 'styled-components';
 import './App.css';
 import Person from './Person/Person';
 
+
+const StyledButton = styled.button`
+background-color : green;
+color: white;
+font : inherit;
+border: 1px solid blue;
+padding: 8px;
+cursor: pointer;
+  
+&:hover {
+  background-color: lightgreen;
+    color: black;
+}
+`
+;
 
 
 class App extends Component {
@@ -79,18 +95,18 @@ togglePersonHandler = () => {
 
   render() {
 
-    const style = {
-      backgroundColor : "green",
-      color: 'white',
-      font : 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    };
+    // const style = {
+    //   backgroundColor : "green",
+    //   color: 'white',
+    //   font : 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightgreen',
+    //     color: 'black'
+    //   }
+    // };
 
     let persons = null;
 
@@ -112,11 +128,11 @@ togglePersonHandler = () => {
         </div>  
        // </StyleRoot>
       );
-      style.backgroundColor= 'red';   
-      style[':hover'] = {
-        backgroundColor :'salmon',
-        color : 'black'
-      }  
+      // style.backgroundColor= 'red';   
+      // style[':hover'] = {
+      //   backgroundColor :'salmon',
+      //   color : 'black'
+      // }  
     }
 
     //let classes = ['red', 'bold'].join(' '); //reslut will be string-> "red bold"
@@ -136,9 +152,10 @@ togglePersonHandler = () => {
         {/*<p className={classes}>This is working fine!!</p> // cannot be juxt classes- it should be string*/}
         <p className={classes.join(' ')}>This is working fine!!</p>
          
-        <button style={style}
-       // onClick={() => this.switchnameHandler('Nitin')}
-       onClick= {this.togglePersonHandler}>Switch Name</button>  {/* 1st way to bind */}
+        <StyledButton 
+           //style={style}
+           // onClick={() => this.switchnameHandler('Nitin')}
+           onClick= {this.togglePersonHandler}>Switch Name</StyledButton>  {/* 1st way to bind */}
           {persons}
      
       </div>
