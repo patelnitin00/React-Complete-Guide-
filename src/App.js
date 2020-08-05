@@ -8,7 +8,8 @@ import Person from './Person/Person';
 
 
 const StyledButton = styled.button`
-background-color : green;
+//background-color : green;
+background-color : ${props => props.alt ?  'red' : 'green'};
 color: white;
 font : inherit;
 border: 1px solid blue;
@@ -16,7 +17,7 @@ padding: 8px;
 cursor: pointer;
   
 &:hover {
-  background-color: lightgreen;
+  background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
     color: black;
 }
 `
@@ -155,6 +156,7 @@ togglePersonHandler = () => {
         <StyledButton 
            //style={style}
            // onClick={() => this.switchnameHandler('Nitin')}
+           alt = {this.state.showPersons}
            onClick= {this.togglePersonHandler}>Switch Name</StyledButton>  {/* 1st way to bind */}
           {persons}
      
