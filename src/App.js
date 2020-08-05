@@ -1,6 +1,7 @@
 // React Complete Guide
 import React, { Component } from 'react';
 //import React, { useState } from 'react';  //useState is most important react hook
+import Radium from 'radium';
 import './App.css';
 import Person from './Person/Person';
 
@@ -84,7 +85,11 @@ togglePersonHandler = () => {
       font : 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     let persons = null;
@@ -105,7 +110,11 @@ togglePersonHandler = () => {
             }
         </div>  
       );
-      style.backgroundColor= 'red';     
+      style.backgroundColor= 'red';   
+      style[':hover'] = {
+        backgroundColor :'salmon',
+        color : 'black'
+      }  
     }
 
     //let classes = ['red', 'bold'].join(' '); //reslut will be string-> "red bold"
@@ -212,5 +221,7 @@ const switchnameHandler = () => {
 }*/
 
 
-export default App;
+//export defaull App;
+//higher order compoments - wrapping component inside component - adding exter functionality
+export default Radium(App);
 
