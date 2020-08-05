@@ -1,7 +1,7 @@
 // React Complete Guide
 import React, { Component } from 'react';
 //import React, { useState } from 'react';  //useState is most important react hook
-import Radium, {StyleRoot} from 'radium';
+//import Radium, {StyleRoot} from 'radium';
 import './App.css';
 import Person from './Person/Person';
 
@@ -96,7 +96,7 @@ togglePersonHandler = () => {
 
     if(this.state.showPersons){
       persons = (
-        <StyleRoot>  
+       // <StyleRoot>  
         <div>
             {
               this.state.persons.map((person,index) => {
@@ -110,7 +110,7 @@ togglePersonHandler = () => {
               })
             }
         </div>  
-        </StyleRoot>
+       // </StyleRoot>
       );
       style.backgroundColor= 'red';   
       style[':hover'] = {
@@ -223,7 +223,7 @@ const switchnameHandler = () => {
 }*/
 
 
-//export defaull App;
+export default App;
 //higher order compoments - wrapping component inside component - adding exter functionality
-export default Radium(App);
+//export default Radium(App);
 
