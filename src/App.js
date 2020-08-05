@@ -5,6 +5,7 @@ import './App.css';
 import Person from './Person/Person';
 
 
+
 class App extends Component {
  
   
@@ -66,6 +67,22 @@ togglePersonHandler = () => {
       cursor: 'pointer'
     };
 
+    let persons = null;
+
+    if(this.state.showPersons){
+      persons = (
+       <div>
+       <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+       <Person name={this.state.persons[1].name} 
+               age={this.state.persons[1].age} 
+               changed = {this.onnameChangedHandler}
+               click={this.switchnameHandler.bind(this,'NITIN PATEL')}>My hobby: Plaing games.</Person> {/* 2nd way to bind - more suitable */}
+               
+       <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+      </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Second Commit</h1>
@@ -73,18 +90,8 @@ togglePersonHandler = () => {
         <button style={style}
        // onClick={() => this.switchnameHandler('Nitin')}
        onClick= {this.togglePersonHandler}>Switch Name</button>  {/* 1st way to bind */}
-      {
-        this.state.showPersons === true ?
-       <div>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person name={this.state.persons[1].name} 
-                age={this.state.persons[1].age} 
-                changed = {this.onnameChangedHandler}
-                click={this.switchnameHandler.bind(this,'NITIN PATEL')}>My hobby: Plaing games.</Person> {/* 2nd way to bind - more suitable */}
-                
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-       </div> : null
-       } 
+          {persons}
+     
       </div>
     );
   }
