@@ -105,13 +105,15 @@ togglePersonHandler = () => {
             }
         </div>  
       );
-      style.backgroundColor= 'red';
-      
+      style.backgroundColor= 'red';     
     }
+
+    let classes = ['red', 'bold'].join(' '); //reslut will be string-> "red bold"
 
     return (
       <div className="App">
-        <h1>Second Commit</h1>
+        <h1>React App</h1>
+        <p className={classes}>This is working fine!!</p>
          
         <button style={style}
        // onClick={() => this.switchnameHandler('Nitin')}
