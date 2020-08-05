@@ -16,9 +16,9 @@ class App extends Component {
 
   state = {
     persons: [
-      {name: "Max", age: 28},
-      {name: "Manu", age:29},
-      {name: "Maria", age:22}
+      {id:'abc1', name: "Max", age: 28},
+      {id:'def2', name: "Manu", age:29},
+      {id:'ghi3', name: "Maria", age:22}
     ],
     otherState: 'some other state',
     showPersons: false
@@ -88,6 +88,7 @@ togglePersonHandler = () => {
                           click = {() => this.deletePersonHander(index)}
                           name={person.name} 
                           age={person.age} 
+                          key = {person.id}
                           />
               })
             }
@@ -166,12 +167,6 @@ const switchnameHandler = () => {
 
 })
 };
-
-
-
-
-
-
 
   
     return (
