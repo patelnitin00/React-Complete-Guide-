@@ -79,7 +79,8 @@ togglePersonHandler = () => {
   render() {
 
     const style = {
-      backgroundColor : "White",
+      backgroundColor : "green",
+      color: 'white',
       font : 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -104,6 +105,8 @@ togglePersonHandler = () => {
             }
         </div>  
       );
+      style.backgroundColor= 'red';
+      
     }
 
     return (
@@ -116,7 +119,9 @@ togglePersonHandler = () => {
           {persons}
      
       </div>
+   
     );
+    
   }
 
 }
