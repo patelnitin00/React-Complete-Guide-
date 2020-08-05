@@ -108,12 +108,22 @@ togglePersonHandler = () => {
       style.backgroundColor= 'red';     
     }
 
-    let classes = ['red', 'bold'].join(' '); //reslut will be string-> "red bold"
+    //let classes = ['red', 'bold'].join(' '); //reslut will be string-> "red bold"
+    const classes = [];
+
+    if(this.state.persons.length <=2 ){
+      classes.push('red'); //will push red class in classes array, classes=['red']
+    }
+
+    if(this.state.persons.length <=1 ){
+      classes.push('bold'); //classes=['red', 'bold']; both are satisfied
+    }
 
     return (
       <div className="App">
         <h1>React App</h1>
-        <p className={classes}>This is working fine!!</p>
+        {/*<p className={classes}>This is working fine!!</p> // cannot be juxt classes- it should be string*/}
+        <p className={classes.join(' ')}>This is working fine!!</p>
          
         <button style={style}
        // onClick={() => this.switchnameHandler('Nitin')}
