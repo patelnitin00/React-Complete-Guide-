@@ -19,7 +19,8 @@ class App extends Component {
       {name: "Manu", age:29},
       {name: "Maria", age:22}
     ],
-    otherState: 'some other state'
+    otherState: 'some other state',
+    showPersons: false
   }
 
   switchnameHandler = (newName) => { 
@@ -49,7 +50,11 @@ onnameChangedHandler = (event) => {
   })
 } 
 
-  
+togglePersonHandler = () => {
+  const doesShow = this.state.showPersons;
+  this.setState({showPersons: !doesShow});
+
+}  
 
   render() {
 
@@ -61,14 +66,16 @@ onnameChangedHandler = (event) => {
       cursor: 'pointer'
     };
 
-
     return (
       <div className="App">
         <h1>Second Commit</h1>
          
         <button style={style}
-        onClick={() => this.switchnameHandler('Nitin')}>Switch Name</button>  {/* 1st way to bind */}
-
+       // onClick={() => this.switchnameHandler('Nitin')}
+       onClick= {this.togglePersonHandler}>Switch Name</button>  {/* 1st way to bind */}
+      {
+        this.state.showPersons === true ?
+       <div>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person name={this.state.persons[1].name} 
                 age={this.state.persons[1].age} 
@@ -76,7 +83,8 @@ onnameChangedHandler = (event) => {
                 click={this.switchnameHandler.bind(this,'NITIN PATEL')}>My hobby: Plaing games.</Person> {/* 2nd way to bind - more suitable */}
                 
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        
+       </div> : null
+       } 
       </div>
     );
   }
